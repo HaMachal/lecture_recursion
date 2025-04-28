@@ -43,17 +43,18 @@ def binary_search(seq, number):
 
 
 def recursive_binary_search(seq, number, left_idx, right_idx):
-
     if right_idx >= left_idx:
         print("l_i:", left_idx, seq[left_idx], "r_i:", right_idx, seq[right_idx])
         middle = left_idx + ((right_idx - left_idx) // 2)
         if seq[middle] == number:
             return middle
         if seq[middle] < number:
-            left_idx = middle + 1
+            #left_idx = middle + 1
+            return recursive_binary_search(seq, number, middle + 1, right_idx)
         elif seq[middle] > number:
-            right_idx = middle - 1
-        return recursive_binary_search(seq, number, left_idx, right_idx)
+            #right_idx = middle - 1
+            return recursive_binary_search(seq, number, left_idx, middle - 1)
+        #return recursive_binary_search(seq, number, left_idx, right_idx)
     else:
         return None
 
